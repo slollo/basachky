@@ -31,6 +31,7 @@ message(${SORT_TEST_INPUT})
 function (add_sort_exec_run name)
 	add_executable(${name} ${name}.cpp)
 
+	set_property(TARGET ${name} PROPERTY CXX_STANDARD 17)
 	target_compile_options(${name} PRIVATE -O3)
 	target_compile_definitions(${name} PRIVATE -DSORT_TEST_INPUT=${SORT_TEST_INPUT})
 
