@@ -11,6 +11,7 @@
 
 #include <iostream>
 
+
 template <class cont, bool empty = IsEmpty<cont>::result>
 struct Print
 {
@@ -21,6 +22,7 @@ struct Print
 	}
 };
 
+
 template <class cont>
 struct Print<cont, true>
 {
@@ -29,4 +31,5 @@ struct Print<cont, true>
 		std::cout << std::endl;
 	}
 };
+
 #endif /* PRINT_HPP */
