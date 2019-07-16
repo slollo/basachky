@@ -16,7 +16,7 @@
 
 
 template <class EType>
-struct Null
+struct ListNull
 {
 	typedef EType Type;
 	typedef size_t KeyT;
@@ -28,7 +28,7 @@ struct List
 {
 	typedef EType Type;
 	typedef size_t KeyT;
-	typedef Null<EType> Empty;
+	typedef ListNull<EType> Empty;
 	static const Type value = elem;
 	typedef T tail;
 };
@@ -44,12 +44,12 @@ struct ToList
 template <class EType, EType e>
 struct ToList<EType, e>
 {
-	typedef List<EType, e, Null<EType>> Result;
+	typedef List<EType, e, ListNull<EType>> Result;
 };
 
 
 template <class EType>
-struct IsEmpty<Null<EType>>
+struct IsEmpty<ListNull<EType>>
 {
 	static const bool result = true;
 };
@@ -70,9 +70,9 @@ struct Tail<List<EType, e, T>>
 
 
 template <class EType>
-struct Tail<Null<EType>>
+struct Tail<ListNull<EType>>
 {
-	typedef Null<EType> Result;
+	typedef ListNull<EType> Result;
 };
 
 
@@ -84,9 +84,9 @@ struct PushFront<List<EType, e, T>, ie>
 
 
 template <class EType, EType ie>
-struct PushFront<Null<EType>, ie>
+struct PushFront<ListNull<EType>, ie>
 {
-	typedef List<EType, ie, Null<EType>> Result;
+	typedef List<EType, ie, ListNull<EType>> Result;
 };
 
 #endif /* LIST_HPP */
