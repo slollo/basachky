@@ -41,14 +41,23 @@ function (add_sort_exec_run name)
 		DEPENDS ${name}
 		USES_TERMINAL
 		)
+	add_custom_command(
+		COMMAND objdump --disassemble=main ${name} | sed 's/${name}/NAME/g' >${name}.asm
+		WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+		DEPENDS ${name}
+		OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${name}.asm
+		COMMENT "Disassembling ${name}"
+		)
 endfunction ()
 
 foreach (sort IN ITEMS ${sorts})
 	add_sort_exec_run(${sort})
 	list(APPEND run_sorts run_${sort})
+	list(APPEND asm_sorts ${CMAKE_CURRENT_BINARY_DIR}/${sort}.asm)
 endforeach (sort)
 
 
 add_custom_target(run DEPENDS ${run_sorts})
+add_custom_target(asm DEPENDS ${asm_sorts})
 
 set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE "${CMAKE_COMMAND} -E time")
