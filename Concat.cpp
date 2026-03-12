@@ -1,18 +1,18 @@
 /*
- *      Concat.hpp
+ *      Concat.cpp
  *
  *
- * Copyright (C) 2019 Max V. Stotsky <maxstotsky@gmail.com>
+ * Copyright (C) 2026 Max V. Stotsky <maxstotsky@gmail.com>
  *
  */
 
-#ifndef CONCAT_HPP
-#define CONCAT_HPP
+export module Concat;
 
-#include "HeadTail.hpp"
-#include "IsEmpty.hpp"
+import HeadTail;
+import IsEmpty;
 
-
+export
+{
 template <class cont0, class cont1, bool empty = IsEmpty<cont0>::result>
 struct Concat
 {
@@ -29,5 +29,4 @@ struct Concat<cont0, cont1, true>
 {
 	typedef cont1 Result;
 };
-
-#endif /* CONCAT_HPP */
+}

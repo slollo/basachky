@@ -1,15 +1,7 @@
-cmake_minimum_required(VERSION 3.13)
+cmake_minimum_required(VERSION 3.31)
+set(CMAKE_COLOR_DIAGNOSTICS ON)
 
 project(TSort)
-
-option (FORCE_COLORED_OUTPUT "Always produce ANSI-colored output (GNU/Clang only)." FALSE)
-if (${FORCE_COLORED_OUTPUT})
-	if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-		add_compile_options (-fdiagnostics-color=always)
-	elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-		add_compile_options (-fcolor-diagnostics)
-	endif ()
-endif ()
 
 set(sorts
 	QuickSortList QuickSortArray
@@ -29,12 +21,47 @@ endforeach ()
 message(${SORT_TEST_INPUT})
 #set(SORT_TEST_INPUT 1,32,8,8,3,4,7,-4,2,67,9764,5,-1)
 
+add_library(Containers STATIC)
+target_sources(Containers PUBLIC
+	FILE_SET CXX_MODULES
+	FILES
+		# Containers
+		Array.cpp
+		List.cpp
+
+		# Algorithms
+		Concat.cpp
+		Filter.cpp
+		HeadTail.cpp
+		IsEmpty.cpp
+		Length.cpp
+		Merge.cpp
+		Operator.cpp
+		Print.cpp
+		Select.cpp
+		Slice.cpp
+		SortedInsert.cpp
+	)
+set_property(TARGET Containers PROPERTY CXX_STANDARD 20)
+
+add_library(Sorts STATIC)
+target_sources(Sorts PUBLIC
+	FILE_SET CXX_MODULES
+	FILES
+		BubbleSort.cpp
+		InsertionSort.cpp
+		MergeSort.cpp
+		QuickSort.cpp
+	)
+target_link_libraries(Sorts PUBLIC Containers)
+set_property(TARGET Sorts PROPERTY CXX_STANDARD 20)
+
 function (add_sort_exec_run name)
 	add_executable(${name} ${name}.cpp)
 
-	set_property(TARGET ${name} PROPERTY CXX_STANDARD 17)
-	target_compile_options(${name} PRIVATE -O3)
+	set_property(TARGET ${name} PROPERTY CXX_STANDARD 20)
 	target_compile_definitions(${name} PRIVATE -DSORT_TEST_INPUT=${SORT_TEST_INPUT})
+	target_link_libraries(${name} PRIVATE Sorts)
 
 	add_custom_target(run_${name}
 		COMMAND ${CMAKE_CURRENT_BINARY_DIR}/${name}

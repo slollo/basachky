@@ -1,23 +1,26 @@
 /*
- *      BubbleSort.hpp
+ *      BubbleSort.cpp
  *
  *
- * Copyright (C) 2019 Max V. Stotsky <maxstotsky@gmail.com>
+ * Copyright (C) 2026 Max V. Stotsky <maxstotsky@gmail.com>
  *
  */
 
-#ifndef BUBBLESORT_HPP
-#define BUBBLESORT_HPP
+module;
 
 #include <cstddef>
 
-#include "HeadTail.hpp"
-#include "IsEmpty.hpp"
-#include "Length.hpp"
-#include "Operator.hpp"
-#include "Select.hpp"
+export module BubbleSort;
+
+import HeadTail;
+import IsEmpty;
+import Length;
+import Operator;
+import Select;
 
 
+export
+{
 template <class cont, template <class> class Cmp = Less, size_t i = 0,
           size_t len = Length<cont>::result>
 struct BubblePush
@@ -68,5 +71,4 @@ struct BubbleSort<cont, Cmp, 0>
 {
 	typedef cont Result;
 };
-
-#endif /* BUBBLESORT_HPP */
+}

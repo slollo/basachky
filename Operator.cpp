@@ -1,15 +1,15 @@
 /*
- *      Operator.hpp
+ *      Operator.cpp
  *
  *
- * Copyright (C) 2019 Max V. Stotsky <maxstotsky@gmail.com>
+ * Copyright (C) 2026 Max V. Stotsky <maxstotsky@gmail.com>
  *
  */
 
-#ifndef OPERATOR_HPP
-#define OPERATOR_HPP
+export module Operator;
 
-
+export
+{
 template <template <class> class Op, class T>
 struct Not
 {
@@ -105,5 +105,4 @@ using Greater = Not<LessEq, T>;
 
 template <class T>
 using GreaterEq = Not<Less, T>;
-
-#endif /* OPERATOR_HPP */
+}

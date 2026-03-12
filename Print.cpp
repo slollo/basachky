@@ -1,23 +1,29 @@
 /*
- *      Print.hpp
+ *      Print.cpp
  *
  *
- * Copyright (C) 2019 Max V. Stotsky <maxstotsky@gmail.com>
+ * Copyright (C) 2026 Max V. Stotsky <maxstotsky@gmail.com>
  *
  */
 
-#ifndef PRINT_HPP
-#define PRINT_HPP
+
+module;
 
 #include <iostream>
 
+export module Print;
 
+import IsEmpty;
+import HeadTail;
+
+export
+{
 template <class cont, bool empty = IsEmpty<cont>::result>
 struct Print
 {
 	Print()
 	{
-		std::cout << Head<cont>::result << " ";
+		std::cout << Head<cont>::result << ' ';
 		Print<typename Tail<cont>::Result>();
 	}
 };
@@ -28,8 +34,7 @@ struct Print<cont, true>
 {
 	Print()
 	{
-		std::cout << std::endl;
+		std::cout << "\n";
 	}
 };
-
-#endif /* PRINT_HPP */
+}

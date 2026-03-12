@@ -1,20 +1,22 @@
 /*
- *      Length.hpp
+ *      Length.cpp
  *
  *
- * Copyright (C) 2019 Max V. Stotsky <maxstotsky@gmail.com>
+ * Copyright (C) 2026 Max V. Stotsky <maxstotsky@gmail.com>
  *
  */
 
-#ifndef LENGTH_HPP
-#define LENGTH_HPP
+module;
 
 #include <cstddef>
 
-#include "IsEmpty.hpp"
-#include "HeadTail.hpp"
+export module Length;
 
+import IsEmpty;
+import HeadTail;
 
+export
+{
 template <class cont, bool empty = IsEmpty<cont>::result>
 struct Length
 {
@@ -27,5 +29,4 @@ struct Length<cont, true>
 {
 	static const size_t result = 0;
 };
-
-#endif /* LENGTH_HPP */
+}

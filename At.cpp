@@ -1,17 +1,18 @@
 /*
- *      At.hpp
+ *      At.cpp
  *
  *
- * Copyright (C) 2019 Max V. Stotsky <maxstotsky@gmail.com>
+ * Copyright (C) 2026 Max V. Stotsky <maxstotsky@gmail.com>
  *
  */
 
-#ifndef AT_HPP
-#define AT_HPP
+export module At;
 
-#include "IsEmpty.hpp"
-#include "HeadTail.hpp"
+import IsEmpty;
+import HeadTail;
 
+export
+{
 template <class cont, typename cont::KeyT pos, bool empty = IsEmpty<cont>::result>
 struct At
 {
@@ -19,5 +20,6 @@ struct At
 	    (pos == 0) ? Head<cont>::result
 	               : At<typename Tail<cont>::Result, pos - 1>::result;
 };
+}
 
 #endif /* AT_HPP */

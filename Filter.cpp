@@ -1,19 +1,19 @@
 /*
- *      Filter.hpp
+ *      Filter.cpp
  *
  *
- * Copyright (C) 2019 Max V. Stotsky <maxstotsky@gmail.com>
+ * Copyright (C) 2026 Max V. Stotsky <maxstotsky@gmail.com>
  *
  */
 
-#ifndef FILTER_HPP
-#define FILTER_HPP
+export module Filter;
 
-#include "HeadTail.hpp"
-#include "Select.hpp"
-#include "IsEmpty.hpp"
+import HeadTail;
+import IsEmpty;
+import Select;
 
-
+export
+{
 template <template <class> class Pred, class cont,
           bool empty = IsEmpty<cont>::result>
 struct Filter
@@ -30,5 +30,4 @@ struct Filter<Pred, cont, true>
 {
 	typedef cont Result;
 };
-
-#endif /* FILTER_HPP */
+}

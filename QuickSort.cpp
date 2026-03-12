@@ -1,22 +1,22 @@
 /*
- *      QuickSort.hpp
+ *      QuickSort.cpp
  *
  *
- * Copyright (C) 2019 Max V. Stotsky <maxstotsky@gmail.com>
+ * Copyright (C) 2026 Max V. Stotsky <maxstotsky@gmail.com>
  *
  */
 
-#ifndef QUICKSORT_HPP
-#define QUICKSORT_HPP
+export module QuickSort;
 
-#include "Concat.hpp"
-#include "Filter.hpp"
-#include "HeadTail.hpp"
-#include "Operator.hpp"
-#include "Length.hpp"
-#include "IsEmpty.hpp"
+import Concat;
+import Filter;
+import HeadTail;
+import IsEmpty;
+import Length;
+import Operator;
 
-
+export
+{
 template <class cont, template <class> class Cmp = Less,
           bool empty = IsEmpty<cont>::result>
 struct QSort
@@ -52,5 +52,4 @@ struct QSort<cont, Cmp, true>
 {
 	typedef cont Result;
 };
-
-#endif /* QUICKSORT_HPP */
+}

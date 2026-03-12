@@ -2,13 +2,17 @@
  *      BubbleSortArray.cpp
  *
  *
- * Copyright (C) 2019 Max V. Stotsky <maxstotsky@gmail.com>
+ * Copyright (C) 2026 Max V. Stotsky <maxstotsky@gmail.com>
  *
  */
 
-#include "BubbleSort.hpp"
-#include "Array.hpp"
-#include "Print.hpp"
+#include <iostream>
+
+import BubbleSort;
+import Array;
+import Print;
+import Length;
+
 #include "test.hpp"
 
 

@@ -1,20 +1,22 @@
 /*
- *      Array.hpp
+ *      Array.cpp
  *
  *
- * Copyright (C) 2019 Max V. Stotsky <maxstotsky@gmail.com>
+ * Copyright (C) 2026 Max V. Stotsky <maxstotsky@gmail.com>
  *
  */
 
-#ifndef ARRAY_HPP
-#define ARRAY_HPP
+module;
 
-#include <iostream>
+#include <cstddef>
 
-#include "HeadTail.hpp"
-#include "IsEmpty.hpp"
+export module Array;
 
+import HeadTail;
+import IsEmpty;
 
+export
+{
 template <class EType, EType ...arr>
 struct Array
 {
@@ -58,5 +60,4 @@ struct PushFront<Array<EType, arr...>, pe>
 {
 	typedef Array<EType, pe, arr...> Result;
 };
-
-#endif /* ARRAY_HPP */
+}

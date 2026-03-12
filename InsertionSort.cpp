@@ -1,20 +1,20 @@
 /*
- *      InsertionSort.hpp
+ *      InsertionSort.cpp
  *
  *
- * Copyright (C) 2019 Max V. Stotsky <maxstotsky@gmail.com>
+ * Copyright (C) 2026 Max V. Stotsky <maxstotsky@gmail.com>
  *
  */
 
-#ifndef INSERTIONSORT_HPP
-#define INSERTIONSORT_HPP
+export module InsertionSort;
 
-#include "HeadTail.hpp"
-#include "IsEmpty.hpp"
-#include "Operator.hpp"
-#include "SortedInsert.hpp"
+import HeadTail;
+import IsEmpty;
+import Operator;
+import SortedInsert;
 
-
+export
+{
 template <class cont, class sorted_cont, template <class> class Cmp = Less,
           bool empty = IsEmpty<cont>::result>
 struct InsertionSort_
@@ -39,5 +39,4 @@ struct InsertionSort
 {
 	typedef typename InsertionSort_<cont, typename cont::Empty, Cmp>::Result Result;
 };
-
-#endif /* INSERTIONSORT_HPP */
+}

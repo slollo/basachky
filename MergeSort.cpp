@@ -1,22 +1,24 @@
 /*
- *      MergeSort.hpp
+ *      MergeSort.cpp
  *
  *
- * Copyright (C) 2019 Max V. Stotsky <maxstotsky@gmail.com>
+ * Copyright (C) 2026 Max V. Stotsky <maxstotsky@gmail.com>
  *
  */
 
-#ifndef MERGESORT_HPP
-#define MERGESORT_HPP
+module;
 
 #include <cstddef>
 
-#include "Length.hpp"
-#include "Merge.hpp"
-#include "Operator.hpp"
-#include "Slice.hpp"
+export module MergeSort;
 
+import Length;
+import Merge;
+import Operator;
+import Slice;
 
+export
+{
 template <class cont, template <class> class Cmp = Less,
           size_t len = Length<cont>::result>
 struct MergeSort
@@ -42,5 +44,4 @@ struct MergeSort<cont, Cmp, 0>
 {
 	typedef cont Result;
 };
-
-#endif /* MERGESORT_HPP */
+}

@@ -2,13 +2,17 @@
  *      QuickSortList.cpp
  *
  *
- * Copyright (C) 2019 Max V. Stotsky <maxstotsky@gmail.com>
+ * Copyright (C) 2026 Max V. Stotsky <maxstotsky@gmail.com>
  *
  */
 
-#include "List.hpp"
-#include "Print.hpp"
-#include "QuickSort.hpp"
+#include <iostream>
+
+import Length;
+import List;
+import Print;
+import QuickSort;
+
 #include "test.hpp"
 
 

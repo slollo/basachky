@@ -1,20 +1,20 @@
 /*
- *      SortedInsert.hpp
+ *      SortedInsert.cpp
  *
  *
- * Copyright (C) 2019 Max V. Stotsky <maxstotsky@gmail.com>
+ * Copyright (C) 2026 Max V. Stotsky <maxstotsky@gmail.com>
  *
  */
 
-#ifndef SORTEDINSERT_HPP
-#define SORTEDINSERT_HPP
+export module SortedInsert;
 
-#include "Operator.hpp"
-#include "IsEmpty.hpp"
-#include "HeadTail.hpp"
-#include "Select.hpp"
+import HeadTail;
+import IsEmpty;
+import Operator;
+import Select;
 
-
+export
+{
 template <class sorted_cont, typename sorted_cont::Type e,
           template <class> class Cmp = Less,
           bool empty = IsEmpty<sorted_cont>::result>
@@ -36,5 +36,4 @@ struct SortedInsert<sorted_cont, e, Cmp, true>
 {
 	typedef typename PushFront<sorted_cont, e>::Result Result;
 };
-
-#endif /* SORTEDINSERT_HPP */
+}

@@ -2,13 +2,17 @@
  *      MergeSortArray.cpp
  *
  *
- * Copyright (C) 2019 Max V. Stotsky <maxstotsky@gmail.com>
+ * Copyright (C) 2026 Max V. Stotsky <maxstotsky@gmail.com>
  *
  */
 
-#include "Array.hpp"
-#include "MergeSort.hpp"
-#include "Print.hpp"
+#include <iostream>
+
+import Array;
+import Length;
+import MergeSort;
+import Print;
+
 #include "test.hpp"
 
 

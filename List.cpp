@@ -1,20 +1,22 @@
 /*
- *      List.hpp
+ *      List.cpp
  *
  *
- * Copyright (C) 2019 Max V. Stotsky <maxstotsky@gmail.com>
+ * Copyright (C) 2026 Max V. Stotsky <maxstotsky@gmail.com>
  *
  */
 
-#ifndef LIST_HPP
-#define LIST_HPP
+module;
 
 #include <iostream>
 
-#include "HeadTail.hpp"
-#include "IsEmpty.hpp"
+export module List;
 
+import HeadTail;
+import IsEmpty;
 
+export
+{
 template <class EType>
 struct ListNull
 {
@@ -88,5 +90,4 @@ struct PushFront<ListNull<EType>, ie>
 {
 	typedef List<EType, ie, ListNull<EType>> Result;
 };
-
-#endif /* LIST_HPP */
+}

@@ -1,19 +1,19 @@
 /*
- *      Slice.hpp
+ *      Slice.cpp
  *
  *
- * Copyright (C) 2019 Max V. Stotsky <maxstotsky@gmail.com>
+ * Copyright (C) 2026 Max V. Stotsky <maxstotsky@gmail.com>
  *
  */
 
-#ifndef SLICE_HPP
-#define SLICE_HPP
+export module Slice;
 
-#include "IsEmpty.hpp"
-#include "HeadTail.hpp"
-#include "Select.hpp"
+import IsEmpty;
+import HeadTail;
+import Select;
 
-
+export
+{
 template <class cont, typename cont::KeyT begin, typename cont::KeyT end,
           typename cont::KeyT i, bool empty = IsEmpty<cont>::result>
 struct _Slice
@@ -42,5 +42,4 @@ struct Slice
 {
 	typedef typename _Slice<cont, begin, end, 0>::Result Result;
 };
-
-#endif /* SLICE_HPP */
+}

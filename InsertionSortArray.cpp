@@ -2,14 +2,17 @@
  *      InsertionSortArray.cpp
  *
  *
- * Copyright (C) 2019 Max V. Stotsky <maxstotsky@gmail.com>
+ * Copyright (C) 2026 Max V. Stotsky <maxstotsky@gmail.com>
  *
  */
 
-#include "Array.hpp"
-#include "InsertionSort.hpp"
-#include "Length.hpp"
-#include "Print.hpp"
+#include <iostream>
+
+import Array;
+import InsertionSort;
+import Length;
+import Print;
+
 #include "test.hpp"
 
 

@@ -1,20 +1,20 @@
 /*
- *      Merge.hpp
+ *      Merge.cpp
  *
  *
- * Copyright (C) 2019 Max V. Stotsky <maxstotsky@gmail.com>
+ * Copyright (C) 2026 Max V. Stotsky <maxstotsky@gmail.com>
  *
  */
 
-#ifndef MERGE_HPP
-#define MERGE_HPP
+export module Merge;
 
-#include "HeadTail.hpp"
-#include "Operator.hpp"
-#include "Select.hpp"
-#include "IsEmpty.hpp"
+import HeadTail;
+import IsEmpty;
+import Operator;
+import Select;
 
-
+export
+{
 template <class cont0, class cont1, template <class> class Cmp = Less,
           bool cont0Empty = IsEmpty<cont0>::result,
           bool cont1Empty = IsEmpty<cont1>::result>
@@ -51,6 +51,4 @@ struct Merge<cont0, cont1, Cmp, true, true>
 {
 	typedef cont0 Result;
 };
-
-
-#endif /* MERGE_HPP */
+}
