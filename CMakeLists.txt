@@ -34,6 +34,7 @@ target_sources(Containers PUBLIC
 		Filter.cpp
 		HeadTail.cpp
 		IsEmpty.cpp
+		IsSorted.cpp
 		Length.cpp
 		Merge.cpp
 		Operator.cpp
