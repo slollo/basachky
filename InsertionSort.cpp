@@ -13,8 +13,7 @@ import IsEmpty;
 import Operator;
 import SortedInsert;
 
-export
-{
+
 template <class cont, class sorted_cont, template <class> class Cmp = Less,
           bool empty = IsEmpty<cont>::result>
 struct InsertionSort_
@@ -34,6 +33,8 @@ struct InsertionSort_<cont, sorted_cont, Cmp, true>
 };
 
 
+export
+{
 template <class cont, template <class> class Cmp = Less>
 struct InsertionSort
 {

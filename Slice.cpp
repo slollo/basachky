@@ -12,14 +12,12 @@ import IsEmpty;
 import HeadTail;
 import Select;
 
-export
-{
 template <class cont, typename cont::KeyT begin, typename cont::KeyT end,
           typename cont::KeyT i, bool empty = IsEmpty<cont>::result>
-struct _Slice
+struct Slice_
 {
 	typedef typename cont::Empty Empty;
-	typedef typename _Slice<typename Tail<cont>::Result, begin, end, i + 1>::Result T;
+	typedef typename Slice_<typename Tail<cont>::Result, begin, end, i + 1>::Result T;
 	typedef typename Select<
 	            (i >= end), Empty,
 	            typename Select<
@@ -31,15 +29,17 @@ struct _Slice
 
 
 template <class cont, typename cont::KeyT begin, typename cont::KeyT end, typename cont::KeyT i>
-struct _Slice<cont, begin, end, i, true>
+struct Slice_<cont, begin, end, i, true>
 {
 	typedef cont Result;
 };
 
 
+export
+{
 template <class cont, typename cont::KeyT begin, typename cont::KeyT end>
 struct Slice
 {
-	typedef typename _Slice<cont, begin, end, 0>::Result Result;
+	typedef typename Slice_<cont, begin, end, 0>::Result Result;
 };
 }

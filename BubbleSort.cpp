@@ -19,8 +19,6 @@ import Operator;
 import Select;
 
 
-export
-{
 template <class cont, template <class> class Cmp = Less, size_t i = 0,
           size_t len = Length<cont>::result>
 struct BubblePush
@@ -59,16 +57,25 @@ struct BubblePush<cont, Cmp, i, 1>
 
 template <class cont, template <class> class Cmp = Less,
           size_t len = Length<cont>::result>
-struct BubbleSort
+struct BubbleSort_
 {
-	typedef typename BubbleSort<typename BubblePush<cont, Cmp, len>::Result, Cmp,
+	typedef typename BubbleSort_<typename BubblePush<cont, Cmp, len>::Result, Cmp,
 	                            len - 1>::Result Result;
 };
 
 
 template <class cont, template <class> class Cmp>
-struct BubbleSort<cont, Cmp, 0>
+struct BubbleSort_<cont, Cmp, 0>
 {
 	typedef cont Result;
+};
+
+
+export
+{
+template <class cont, template <class> class Cmp = Less>
+struct BubbleSort
+{
+	typedef typename BubbleSort_<cont, Cmp>::Result Result;
 };
 }

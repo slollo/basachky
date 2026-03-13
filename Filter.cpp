@@ -12,13 +12,11 @@ import HeadTail;
 import IsEmpty;
 import Select;
 
-export
-{
 template <template <class> class Pred, class cont,
           bool empty = IsEmpty<cont>::result>
-struct Filter
+struct Filter_
 {
-	typedef typename Filter<Pred, typename Tail<cont>::Result>::Result Tail;
+	typedef typename Filter_<Pred, typename Tail<cont>::Result>::Result Tail;
 	typedef typename Select<Pred<typename cont::Type>::check(Head<cont>::result),
 	                        typename PushFront<Tail, Head<cont>::result>::Result,
 	                        Tail>::Result Result;
@@ -26,8 +24,17 @@ struct Filter
 
 
 template <template <class> class Pred, class cont>
-struct Filter<Pred, cont, true>
+struct Filter_<Pred, cont, true>
 {
 	typedef cont Result;
+};
+
+
+export
+{
+template <template <class> class Pred, class cont>
+struct Filter
+{
+	typedef Filter_<Pred, cont>::Result Result;
 };
 }

@@ -8,6 +8,7 @@
 
 export module Operator;
 
+
 export
 {
 template <template <class> class Op, class T>

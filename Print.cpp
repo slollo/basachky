@@ -16,25 +16,32 @@ export module Print;
 import IsEmpty;
 import HeadTail;
 
-export
-{
+
 template <class cont, bool empty = IsEmpty<cont>::result>
-struct Print
+struct Print_
 {
-	Print()
+	Print_()
 	{
 		std::cout << Head<cont>::result << ' ';
-		Print<typename Tail<cont>::Result>();
+		Print_<typename Tail<cont>::Result>();
 	}
 };
 
 
 template <class cont>
-struct Print<cont, true>
+struct Print_<cont, true>
 {
-	Print()
+	Print_()
 	{
 		std::cout << "\n";
 	}
+};
+
+
+export
+{
+template <class cont>
+struct Print: public Print_<cont>
+{
 };
 }

@@ -13,12 +13,11 @@ import IsEmpty;
 import Operator;
 import Select;
 
-export
-{
+
 template <class cont0, class cont1, template <class> class Cmp = Less,
           bool cont0Empty = IsEmpty<cont0>::result,
           bool cont1Empty = IsEmpty<cont1>::result>
-struct Merge
+struct Merge_
 {
 	static const typename cont0::Type e0 = Head<cont0>::result;
 	static const typename cont1::Type e1 = Head<cont1>::result;
@@ -26,29 +25,38 @@ struct Merge
 	typedef typename Tail<cont1>::Result T1;
 	typedef typename Select<
 	            Cmp<typename cont0::Type>::check(e0, e1),
-	            typename PushFront<typename Merge<T0, cont1, Cmp>::Result, e0>::Result,
-	            typename PushFront<typename Merge<cont0, T1, Cmp>::Result, e1>::Result
+	            typename PushFront<typename Merge_<T0, cont1, Cmp>::Result, e0>::Result,
+	            typename PushFront<typename Merge_<cont0, T1, Cmp>::Result, e1>::Result
 	        >::Result Result;
 };
 
 
 template <class cont0, class cont1, template <class> class Cmp>
-struct Merge<cont0, cont1, Cmp, true, false>
+struct Merge_<cont0, cont1, Cmp, true, false>
 {
 	typedef cont1 Result;
 };
 
 
 template <class cont0, class cont1, template <class> class Cmp>
-struct Merge<cont0, cont1, Cmp, false, true>
+struct Merge_<cont0, cont1, Cmp, false, true>
 {
 	typedef cont0 Result;
 };
 
 
 template <class cont0, class cont1, template <class> class Cmp>
-struct Merge<cont0, cont1, Cmp, true, true>
+struct Merge_<cont0, cont1, Cmp, true, true>
 {
 	typedef cont0 Result;
+};
+
+
+export
+{
+template <class cont0, class cont1, template <class> class Cmp = Less>
+struct Merge
+{
+	typedef Merge_<cont0, cont1, Cmp>::Result Result;
 };
 }

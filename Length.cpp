@@ -15,18 +15,26 @@ export module Length;
 import IsEmpty;
 import HeadTail;
 
-export
-{
+
 template <class cont, bool empty = IsEmpty<cont>::result>
-struct Length
+struct Length_
 {
-	static const size_t result = 1 + Length<typename Tail<cont>::Result>::result;
+	static const size_t result = 1 + Length_<typename Tail<cont>::Result>::result;
 };
 
 
 template <class cont>
-struct Length<cont, true>
+struct Length_<cont, true>
 {
 	static const size_t result = 0;
+};
+
+
+export
+{
+template <class cont>
+struct Length
+{
+	static const size_t result = Length_<cont>::result;
 };
 }

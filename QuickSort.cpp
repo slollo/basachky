@@ -15,11 +15,10 @@ import IsEmpty;
 import Length;
 import Operator;
 
-export
-{
+
 template <class cont, template <class> class Cmp = Less,
           bool empty = IsEmpty<cont>::result>
-struct QSort
+struct QSort_
 {
 	template <class T>
 	struct Cmp2
@@ -35,11 +34,11 @@ struct QSort
 	using NotCmp2 = Not<Cmp2, T>;
 
 	typedef typename Concat<
-	            typename QSort<
+	            typename QSort_<
 	                typename Filter<Cmp2, typename Tail<cont>::Result>::Result,
 	                Cmp>::Result,
 	            typename PushFront<
-	                 typename QSort<typename Filter<NotCmp2,
+	                 typename QSort_<typename Filter<NotCmp2,
 	                                         typename Tail<cont>::Result>::Result,
 	                                Cmp>::Result,
 	                 Head<cont>::result
@@ -48,8 +47,17 @@ struct QSort
 };
 
 template <class cont, template <class> class Cmp>
-struct QSort<cont, Cmp, true>
+struct QSort_<cont, Cmp, true>
 {
 	typedef cont Result;
+};
+
+
+export
+{
+template <class cont, template <class> class Cmp = Less>
+struct QSort
+{
+	typedef QSort_<cont, Cmp>::Result Result;
 };
 }

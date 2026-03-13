@@ -11,14 +11,22 @@ export module At;
 import IsEmpty;
 import HeadTail;
 
-export
-{
+
 template <class cont, typename cont::KeyT pos, bool empty = IsEmpty<cont>::result>
-struct At
+struct At_
 {
 	static const typename cont::Type result =
 	    (pos == 0) ? Head<cont>::result
-	               : At<typename Tail<cont>::Result, pos - 1>::result;
+	               : At_<typename Tail<cont>::Result, pos - 1>::result;
+};
+
+
+export
+{
+template <class cont, typename cont::KeyT pos>
+struct At
+{
+	typedef At_<cont, pos>::Result Result;
 };
 }
 
