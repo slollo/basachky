@@ -29,15 +29,14 @@ struct BubblePush
 	typedef typename Tail<CTail>::Result CTailTail;
 
 	typedef typename Select<
-	            Cmp<typename cont::Type>::check(chead, cthead),
-	            typename PushFront<typename BubblePush<CTail, Cmp, i + 1>::Result,
-	                               chead>::Result,
-	            typename PushFront<
-	                typename BubblePush<
-	                    typename PushFront<CTailTail, chead>::Result, Cmp,
-	                    i + 1>::Result,
-	                cthead>::Result
-	        >::Result Result;
+	    Cmp<typename cont::Type>::check(chead, cthead),
+	    typename PushFront<
+	        typename BubblePush<CTail, Cmp, i + 1, len - 1>::Result,
+	        chead>::Result,
+	    typename PushFront<
+	        typename BubblePush<typename PushFront<CTailTail, chead>::Result,
+	                            Cmp, i + 1, len - 1>::Result,
+	        cthead>::Result>::Result Result;
 };
 
 
@@ -59,8 +58,9 @@ template <class cont, template <class> class Cmp = Less,
           size_t len = Length<cont>::result>
 struct BubbleSort_
 {
-	typedef typename BubbleSort_<typename BubblePush<cont, Cmp, len>::Result, Cmp,
-	                            len - 1>::Result Result;
+	typedef
+	    typename BubbleSort_<typename BubblePush<cont, Cmp, len, len>::Result,
+	                         Cmp, len - 1>::Result Result;
 };
 
 
