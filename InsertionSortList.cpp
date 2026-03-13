@@ -6,8 +6,6 @@
  *
  */
 
-#include <iostream>
-
 import InsertionSort;
 import List;
 import TestSort;
