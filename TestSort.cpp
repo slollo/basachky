@@ -8,6 +8,7 @@
 
 module;
 
+#include <iomanip>
 #include <iostream>
 
 export module TestSort;
@@ -16,20 +17,22 @@ import IsSorted;
 import Length;
 import Print;
 
-export
-template <template <class> class Sort, class Input>
+export template <template <class> class Sort, class Input>
 bool test_sort(const std::string& name)
 {
-	std::cout << "Input:       ";
+	const int header_w = 20;
+	std::cout << std::left << std::setw(header_w) << "Input:";
 	Print<Input>();
-	std::cout << "Length:      " << Length<Input>::result << std::endl;
+	std::cout << std::left << std::setw(header_w)
+	          << "Length:" << Length<Input>::result << std::endl;
 
 	typedef typename Sort<Input>::Result SortedInput;
-	std::cout << name << " Sort: ";
+	std::cout << std::left << std::setw(header_w) << (name + " Sort:");
 	Print<SortedInput>();
 
 	const bool result = IsSorted<SortedInput>::result;
-	std::cout << "IsSorted: " << result << std::endl;
+	std::cout << std::left << std::setw(header_w)
+	          << "IsSorted:" << std::boolalpha << result << std::endl;
 
 	return result;
 }
