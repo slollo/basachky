@@ -8,24 +8,14 @@
 
 #include <iostream>
 
-import Length;
 import List;
-import Print;
 import QuickSort;
+import TestSort;
 
 #include "test.hpp"
 
 
 int main(int /*argc*/, char** /*argv*/)
 {
-	typedef ToList<SORT_TEST_INPUT>::Result Input;
-
-	std::cout << "Input:      ";
-	Print<Input>();
-	std::cout << "Length:     " << Length<Input>::result << std::endl;
-
-	std::cout << "Quick Sort: ";
-	Print<QSort<Input>::Result>();
-
-	return 0;
+	return !test_sort<QSort, ToList<SORT_TEST_INPUT>::Result>("Quick");
 }

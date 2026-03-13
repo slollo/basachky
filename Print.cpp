@@ -33,7 +33,7 @@ struct Print_<cont, true>
 {
 	Print_()
 	{
-		std::cout << "\n";
+		std::cout << std::endl;
 	}
 };
 

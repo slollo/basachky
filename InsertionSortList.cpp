@@ -9,23 +9,13 @@
 #include <iostream>
 
 import InsertionSort;
-import Length;
 import List;
-import Print;
+import TestSort;
 
 #include "test.hpp"
 
 
 int main(int /*argc*/, char** /*argv*/)
 {
-	typedef ToList<SORT_TEST_INPUT>::Result Input;
-
-	std::cout << "Input:       ";
-	Print<Input>();
-	std::cout << "Length:      " << Length<Input>::result << std::endl;
-
-	std::cout << "Insertion Sort:  ";
-	Print<InsertionSort<Input>::Result>();
-
-	return 0;
+	return !test_sort<InsertionSort, ToList<SORT_TEST_INPUT>::Result>("Insertion");
 }

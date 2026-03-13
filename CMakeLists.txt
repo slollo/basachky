@@ -53,6 +53,7 @@ target_sources(Sorts PUBLIC
 		InsertionSort.cpp
 		MergeSort.cpp
 		QuickSort.cpp
+		TestSort.cpp
 	)
 target_link_libraries(Sorts PUBLIC Containers)
 set_property(TARGET Sorts PROPERTY CXX_STANDARD 20)

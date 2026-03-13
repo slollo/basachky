@@ -6,26 +6,14 @@
  *
  */
 
-#include <iostream>
-
-import BubbleSort;
 import Array;
-import Print;
-import Length;
+import BubbleSort;
+import TestSort;
 
 #include "test.hpp"
 
 
 int main(int /*argc*/, char** /*argv*/)
 {
-	typedef Array<SORT_TEST_INPUT> Input;
-
-	std::cout << "Input:       ";
-	Print<Input>();
-	std::cout << "Length:      " << Length<Input>::result << std::endl;
-
-	std::cout << "Bubble Sort: ";
-	Print<BubbleSort<Input>::Result>();
-
-	return 0;
+	return !test_sort<BubbleSort, Array<SORT_TEST_INPUT>>("Bubble");
 }
